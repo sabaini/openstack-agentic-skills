@@ -7,6 +7,7 @@ A collection of GitHub Copilot agent skills for OpenStack / Sunbeam development 
 | Skill | Description |
 |---|---|
 | [cinder-spec-generator](cinder-spec-generator/SKILL.md) | Extracts oslo.config options from Cinder volume driver source and generates driver-spec YAML files for sunbeam-cinder-factory |
+| [plot-fio-results](plot-fio-results/README.md) | Generates a 4-panel matplotlib chart (throughput, IOPS, latency, scaling efficiency) from rally-ci-churn fio benchmark result files |
 
 ---
 
