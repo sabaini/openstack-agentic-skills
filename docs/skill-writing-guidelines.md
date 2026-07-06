@@ -20,8 +20,9 @@ Keep each skill narrowly scoped. OpenAI explicitly recommends keeping each skill
 
 Good:
 
-* debug a flaky pytest test
-* generate release notes from merged PRs
+
+* debugging-flaky-pytest
+* generating-release-notes-from-prs
 
 Bad:
 
@@ -93,6 +94,7 @@ Use scripts for things the model should not keep reinventing:
 * generating reports
 * validating output
 * running fixed command sequences
+* if applicable, summarize file changes / additions
 
 Keep scripts runnable outside any specific agent runtime. 
 
@@ -105,6 +107,7 @@ A helper script should usually document just:
 * purpose
 * usage
 * exit behavior
+* requirements (e.g. access tokens, libraries)
 
 Example:
 
@@ -114,7 +117,7 @@ Example:
 Purpose: Extract failing tests from CI logs.
 
 Usage:
-    python scripts/extract_failures.py <log_dir>
+    python3 scripts/extract_failures.py <log_dir>
 """
 ```
 
@@ -122,7 +125,7 @@ If the script writes a file, note the output path too.
 
 ### 7. Include execution-time validation
 
-Every nontrivial skill should include an explicit validation step that runs while the skill is being executed. Anthropic’s best-practices doc gives this exact pattern: validate immediately, inspect the error, fix, rerun, and only proceed once validation passes. ([Claude][1])
+Every nontrivial skill should include an explicit validation step that runs while the skill is being executed. Anthropic’s best-practices doc gives this exact pattern: validate immediately, inspect the error, fix, rerun, and only proceed once validation passes. In order to prevent thrashing, set a limit on the number of reruns, e.g. 2-3 times. ([Claude][1])
 
 Include:
 
