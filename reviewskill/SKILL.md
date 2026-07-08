@@ -20,6 +20,10 @@ If the user did not specify what to review, ask a short clarification. Preserve 
 
 Do not ask the user to select rubrics. This skill always reviews with all rubrics in `rubrics/`.
 
+## Prerequisites
+
+For reviewing Github PRs requires the `gh` binary, and optionally authentication if reading non-public repositories.
+
 ## Prepare the review packet
 
 Run `scripts/prepare_review.py` using its absolute path while your shell is in the target repository, or pass `--cwd` for the target repository. The script finds the git repository root, gathers deterministic input, loads all rubrics, writes a Markdown packet, and prints the packet path plus the intended review-report path.
